@@ -1,0 +1,30 @@
+<div class="dash-box">
+  <div class="main-chart-box" *ngIf="barChartLabels">
+    <div class="dash-title">월간 판매 데이터</div>
+    <div class="bar-chart">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend">
+      </canvas>
+    </div>
+  </div>
+  <div class="flex-nowrap option-flex-center">
+    <div class="btn-group">
+      <div class="btn btn-primary" mwlCalendarPreviousView
+           [view]="view" [(viewDate)]="viewDate" (viewDateChange)="dateChange()">
+        이전달
+      </div>
+      <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate"
+           (viewDateChange)="dateChange()">
+        이번달
+      </div>
+      <div class="btn btn-primary" mwlCalendarNextView
+           [view]="view" [(viewDate)]="viewDate" (viewDateChange)="dateChange()">
+        다음달
+      </div>
+    </div>
+  </div>
+</div>

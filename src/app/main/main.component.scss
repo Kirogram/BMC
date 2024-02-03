@@ -1,0 +1,148 @@
+.dash-title {
+  color: black;
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.dash-box {
+  padding: 10px;
+  margin: 20px;
+  border-bottom: 3px solid #31DFD9;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(184, 184, 184, 1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(184, 184, 184, 1);
+  box-shadow: 0px 0px 10px 0px rgba(184, 184, 184, 1);
+  background: #272953;
+  color: white;
+}
+
+.dou-box {
+  padding: 0 20px;
+
+}
+
+.pie-chart-box {
+  width: 30%;
+  min-width: 500px;
+}
+
+.delivery-box {
+  font-family: "Noto Sans KR", sans-serif;
+  width: 30%;
+  max-width: 350px;
+  min-width: 300px;
+  height: 250px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 60px;
+
+  span {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 50px;
+    color: #00fff7;
+  }
+}
+
+.sub-chart-box {
+  height: 224px;
+
+  cavas {
+    height: 100%;
+  }
+}
+
+.mat-box {
+  border-bottom: 2px solid #2ac1bc;
+  height: 100%;
+  margin: 20px;
+
+  table {
+    font-family: "Noto Sans KR", sans-serif;
+
+    thead {
+      td {
+        font-weight: bold;
+        background: #2ac1bc;
+        color: white;
+      }
+    }
+
+    tr {
+      border-bottom: 1px solid gray;
+    }
+
+    td {
+      border-right: 1px solid gray;
+      padding: 10px;
+      text-align: center;
+    }
+
+    td:last-child {
+      border-right: 0;
+    }
+
+    .money-td {
+      text-align: right;
+    }
+  }
+
+  .hide-data {
+    display: none;
+  }
+
+  .time-table {
+    thead {
+      td:nth-child(1) {
+        min-width: 50px;
+      }
+
+      td:nth-child(2) {
+        min-width: 65px;
+      }
+
+      td:nth-child(3) {
+        min-width: 100px;
+      }
+    }
+  }
+
+  .week-table-size {
+    tbody {
+      td {
+        width: 100px;
+        height: 61px;
+      }
+    }
+  }
+
+}
+
+.table-full-button {
+  text-align: center;
+  padding-top: 25px;
+
+  button {
+    font-family: "Noto Sans KR", sans-serif;
+    background: #2ac1bc;
+    color: white;
+    border: 0;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}
+
+.flex-sub-div {
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.order-cate-table-box {
+  padding: 20px 0;
+}
+
+.mat-expansion-panel {
+ background: #272953;
+  color: white;
+}

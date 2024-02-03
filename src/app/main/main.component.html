@@ -1,0 +1,233 @@
+<div>
+  <app-main-grid (close)="dateChange($event)"></app-main-grid>
+  <div class="flex-default option-flex-center">
+    <div class="dash-box delivery-box" *ngIf="monthPrice">
+      <span>월간 누적 매출</span>
+      <div>{{ monthPrice.MONTH_PRICE|comma2 }}원</div>
+    </div>
+    <div class="dash-box delivery-box">
+      <div class="flex-default option-flex-center">
+        <div *ngFor="let data of douData" class="dou-box">
+          <span>{{ data.DOU }}</span>
+          <div>{{ data.ORDER_COUNT }}건</div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-box delivery-box" *ngIf="deliveryData">
+      <span>배달팁</span>
+      <div>{{ deliveryData.DELIVERY_PRICE|comma2 }}원</div>
+    </div>
+  </div>
+  <div class="flex-nowrap option-flex-center-only-vertical">
+    <div class="flex-sub-div">
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            시간대별 판매 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table class="time-table">
+          <thead>
+          <tr>
+            <td>시간</td>
+            <td>주문수</td>
+            <td>매출액</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of timeData;">
+            <td>{{ data.ORDER_TIME }}시</td>
+            <td>{{ data.ORDER_COUNT }}건</td>
+            <td class="money-td">{{ data.ORDER_PRICE|comma2 }}원</td>
+          </tr>
+          </tbody>
+        </table>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="flex-default flex-sub-div">
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            요일별 판매 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table class="week-table-size">
+          <thead>
+          <tr>
+            <td>주차</td>
+            <td>월</td>
+            <td>화</td>
+            <td>수</td>
+            <td>목</td>
+            <td>금</td>
+            <td>토</td>
+            <td>일</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of weekData;let i = index;">
+            <td>{{ i + 1 }}주차</td>
+            <td><span *ngIf="data.MO!=0">{{ data.MO|comma2 }}원<br>({{ data.MO_COUNT }}건)</span></td>
+            <td><span *ngIf="data.TU!=0">{{ data.TU|comma2 }}원<br>({{ data.TU_COUNT }}건)</span></td>
+            <td><span *ngIf="data.WE!=0">{{ data.WE|comma2 }}원<br>({{ data.WE_COUNT }}건)</span></td>
+            <td><span *ngIf="data.TR!=0">{{ data.TR|comma2 }}원<br>({{ data.TR_COUNT }}건)</span></td>
+            <td><span *ngIf="data.FR!=0">{{ data.FR|comma2 }}원<br>({{ data.FR_COUNT }}건)</span></td>
+            <td><span *ngIf="data.SA!=0">{{ data.SA|comma2 }}원<br>({{ data.SA_COUNT }}건)</span></td>
+            <td><span *ngIf="data.SU!=0">{{ data.SU|comma2 }}원<br>({{ data.SU_COUNT }}건)</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            주문 유형별 판매 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-chart-box">
+          <canvas baseChart height="224"
+                  [datasets]="pieChartDatasets"
+                  [labels]="pieChartLabels"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend">
+          </canvas>
+        </div>
+        <div class="order-cate-table-box" *ngIf="orderCategoryData">
+          <table>
+            <thead>
+            <tr>
+              <td>기타</td>
+              <td>포장주문</td>
+              <td>오픈리스트</td>
+              <td>울트라콜</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{ orderCategoryData.ETC }}건</td>
+              <td>{{ orderCategoryData.WALK }}건</td>
+              <td>{{ orderCategoryData.OPENLIST|comma2 }}건</td>
+              <td>{{ orderCategoryData.ULTRA|comma2 }}건</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            리뷰 주문 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table>
+          <thead>
+          <tr>
+            <td>리뷰명</td>
+            <td>주문수</td>
+            <td>추가금액</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of reviewData;index as i" [ngClass]="{'hide-data':reviewDataShow==true && i>5}">
+            <td>{{ data.SUB_ORDER_NAME }}</td>
+            <td>{{ data.ORDER_COUNT }}건</td>
+            <td>{{ data.SUB_ORDER_PRICE|comma2 }}원</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="table-full-button">
+          <button (click)="reviewDataShow=!reviewDataShow" *ngIf="reviewDataShow==true">전체 보기</button>
+          <button (click)="reviewDataShow=!reviewDataShow" *ngIf="reviewDataShow==false">일부 보기</button>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            메뉴별 주문 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table>
+          <thead>
+          <tr>
+            <td>메뉴명</td>
+            <td>주문수</td>
+            <td>매출액</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of bestMenuData;index as i" [ngClass]="{'hide-data':bestMenuDataShow==true && i>5}">
+            <td>{{ data.ORDER_NAME }}</td>
+            <td>{{ data.ORDER_COUNT }}건</td>
+            <td>{{ data.ORDER_PRICE|comma2 }}원</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="table-full-button">
+          <button (click)="bestMenuDataShow=!bestMenuDataShow" *ngIf="bestMenuDataShow==true">전체 보기</button>
+          <button (click)="bestMenuDataShow=!bestMenuDataShow" *ngIf="bestMenuDataShow==false">일부 보기</button>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            채널별 주문 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table>
+          <thead>
+          <tr>
+            <td>채널</td>
+            <td>ID</td>
+            <td>신청수</td>
+            <td>매출액</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of ultraData;index as i" [ngClass]="{'hide-data':ultraDataShow==true && i>5}">
+            <td>{{ data.ORDER_PRODUCT }}</td>
+            <td>{{ data.ORDER_CAMPAIN }}</td>
+            <td>{{ data.ORDER_COUNT|comma2 }}건</td>
+            <td>{{ data.ORDER_PRICE|comma2 }}원</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="table-full-button">
+          <button (click)="ultraDataShow=!ultraDataShow" *ngIf="ultraDataShow==true">전체 보기</button>
+          <button (click)="ultraDataShow=!ultraDataShow" *ngIf="ultraDataShow==false">일부 보기</button>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="panelOpenState==true" class="mat-box">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            소스 주문 데이터
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table>
+          <thead>
+          <tr>
+            <td>소스명</td>
+            <td>주문수</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of sourceData;index as i" [ngClass]="{'hide-data':sourceDataShow==true && i>5}">
+            <td>{{ data.ORDER_NAME }}</td>
+            <td>{{ data.ORDER_COUNT|comma2 }}건</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="table-full-button">
+          <button (click)="sourceDataShow=!sourceDataShow" *ngIf="sourceDataShow==true">전체 보기</button>
+          <button (click)="sourceDataShow=!sourceDataShow" *ngIf="sourceDataShow==false">일부 보기</button>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</div>

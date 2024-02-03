@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <span></span>
+  <div class="modal-close-btn" (click)="activeModal.dismiss('Cross click')">X</div>
+</div>
+<div>
+  <div class="modal-body">
+    <div [innerHTML]="name" class="modal-text"></div>
+    <div class="modal-close-box">
+      <div (click)="activeModal.close('Close click')">
+        <span class="modal-close">닫기</span>
+      </div>
+    </div>
+  </div>
+</div>

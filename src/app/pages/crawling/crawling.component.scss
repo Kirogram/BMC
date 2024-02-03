@@ -1,0 +1,42 @@
+.crawling-option-box {
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 2px solid #2ac1bc;
+  background: #272953;
+
+  span {
+    color: #2ac1bc;
+    font-weight: bold;
+  }
+}
+
+
+.crawling-button-box {
+  padding: 20px 0;
+  text-align: center;
+
+  button {
+    background: #2ac1bc;
+    color: white;
+    font-weight: bold;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+}
+
+.crawling-text-box {
+  border-bottom: 1px solid #2ac1bc;
+  font-size: 18px;
+  color: #2ac1bc;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.crawling-text {
+  padding: 20px;
+  color: white;
+  height: 500px;
+  overflow: auto;
+}

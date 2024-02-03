@@ -1,0 +1,33 @@
+<div class="body">
+  <div class="flex-default option-flex-center">
+    <div>
+      <div class="crawling-option-box">
+        <span>브랜드</span>
+        <div>
+          <mat-radio-group [(ngModel)]="brandSelect" color="accent">
+            <mat-radio-button *ngFor="let brand of brand" [value]="brand.value">
+              {{ brand.name }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="crawling-option-box">
+        <span>데이터 수집기간</span>
+        <div>
+          <mat-radio-group [(ngModel)]="favoriteSeason">
+            <mat-radio-button *ngFor="let season of seasons" [value]="season.value">
+              {{ season.name }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="crawling-button-box">
+        <button (click)="bmCrawling()">데이터 수집</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="crawling-text-box">수집현황</div>
+    <div [innerHtml]="crawlingText" class="crawling-text"></div>
+  </div>
+</div>
