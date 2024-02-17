@@ -20,6 +20,7 @@
     <div class="flex-default option-flex-center">
       <div class="slide-on">
         <div class="login-box">
+          <div class="hash-login" *ngIf="hashCheck===true">포트폴리오를 통한 방문이시네요 :)<br />접속을 누르시면 바로 접속됩니다</div>
           <input type="password" [(ngModel)]="adminPassWord" placeholder="인증번호를 입력해주세요">
         </div>
         <div class="checks etrans login-save">

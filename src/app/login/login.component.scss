@@ -16,7 +16,7 @@
   padding-right: 50px;
   color: white;
   font-size: 40px;
-  left: 300px;
+  left: 15%;
   font-weight: bold;
   line-height: 60px;
 
@@ -45,6 +45,7 @@
 }
 
 .login-box {
+  position: relative;
   width: 270px;
   padding: 0px 30px;
   border-radius: 30px;
@@ -54,14 +55,28 @@
     background: transparent;
     border-bottom: 1px solid #00C4BD;
     outline: none;
-    color: black;
+    color: white;
     width: 200px;
+    font-size: 24px;
   }
 
   input::placeholder {
     color: #00C4BD;
     font-size: 12px;
   }
+}
+
+.hash-login {
+  position: absolute;
+  content: '';
+  top: -80px;
+  left: 150px;
+  color: white;
+  width: 250px;
+  background: rgba(255, 255, 255, 0.21);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid white;
 }
 
 .login-save {

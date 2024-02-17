@@ -20,7 +20,8 @@ export class CrawlingComponent {
     {name: '지난6개월', value: 4}];
   brand: any = [
     {name: 'CXD피자', value: 'CXD'},
-    {name: '문그릭스', value: 'MOON'}];
+    {name: '문그릭스', value: 'MOON', disabled: true}
+  ];
 
   constructor(private hs: HttpService,
               private zone: NgZone) {

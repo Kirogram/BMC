@@ -5,7 +5,7 @@
         <span>브랜드</span>
         <div>
           <mat-radio-group [(ngModel)]="brandSelect" color="accent">
-            <mat-radio-button *ngFor="let brand of brand" [value]="brand.value">
+            <mat-radio-button *ngFor="let brand of brand" [value]="brand.value" [disabled]="brand.disabled">
               {{ brand.name }}
             </mat-radio-button>
           </mat-radio-group>
@@ -15,7 +15,7 @@
         <span>데이터 수집기간</span>
         <div>
           <mat-radio-group [(ngModel)]="favoriteSeason">
-            <mat-radio-button *ngFor="let season of seasons" [value]="season.value">
+            <mat-radio-button *ngFor="let season of seasons" [value]="season.value" [disabled]="season.disabled">
               {{ season.name }}
             </mat-radio-button>
           </mat-radio-group>

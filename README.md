@@ -1,4 +1,5 @@
-![메인이미지](https://coolcleaner.co.kr/fileDownLoad/170697350657523.jpg)
+![메인](https://coolcleaner.co.kr/fileDownLoad/17081625481134424.jpg)
+
 # BMC - 데이터 크롤링 & 인사이트 추출
 최소한의 정보로 다양한 인사이트를 추출 배달 사업장 운영에 도움을 주는 컨텐츠들을 구성하여
 
@@ -6,6 +7,9 @@
 
 배달앱 에서 제공해주지 않는 가공 정보들을 제공하여 새로운 시각에서 고객을 파악 할 수 있도록 도와주고 사업장 운영에서 놓치고 있는 점을 한눈에 파악 할 수 있습니다.
 <br><br>
+
+### 라이브 사이트 : [https://cxdpizza.com/login](https://cxdpizza.com/login?PW=1234)
+
 ### **● 프로젝트 개발 환경**
 
 **F/E** : Angular16+ , TypeScript
@@ -24,7 +28,11 @@
 
 **100% / 단독 개발**
 <br><br>
-### **○ 주요 기능 설명**
+### SCREEN
+
+![메인이미지](https://coolcleaner.co.kr/fileDownLoad/170697350657523.jpg)
+
+## **주요 기능 설명**
 ![화면](https://coolcleaner.co.kr/fileDownLoad/1706973563892bmc2.jpg)
 ### (**1) 주문 단위로 제공되는 데이터의 카테고리 단위 분류**
 

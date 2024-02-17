@@ -15,6 +15,7 @@ export class LoginComponent {
 
   adminPassWord: any = '';
   infoSave: any = true;
+  hashCheck: boolean = false;
 
   constructor(private hs: HttpService,
               private router: Router,
@@ -23,6 +24,12 @@ export class LoginComponent {
               private cookieService: CookieService,
               private modalService: NgbModal) {
 
+    this.activatedRoute.queryParams.subscribe(hashKey => {
+      if (hashKey && hashKey['pw']) {
+        this.adminPassWord = hashKey['pw'];
+        this.hashCheck = true;
+      }
+    });
     if (this.cookieService.get('adminPassWord')) {
       const params = {
         pw: this.cookieService.get('adminPassWord'),
@@ -34,9 +41,6 @@ export class LoginComponent {
         }
       });
     }
-  }
-
-  ngOnInit() {
   }
 
   loginShop() {
